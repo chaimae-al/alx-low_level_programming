@@ -1,29 +1,33 @@
+
 #include <stdio.h>
 
 /**
- *main - Entry point, print 00 to 99 using putchar
- *Return: Always 0 (Success)
+ * main - Prints all possible combinations of two different digits,
+ *        in ascending order, separated by a comma followed by a space.
+ *
+ * Return: Always 0.
  */
-
 int main(void)
 {
-	int tens;
-	int ones;
+	int digit1, digit2;
 
-	for (tens = '0'; tens <= '9'; tens++) 
+	for (digit1 = 0; digit1 < 9; digit1++)
 	{
-		for (ones = '0'; ones <= '9'; ones++) 
+		for (digit2 = digit1 + 1; digit2 < 10; digit2++)
 		{
-			putchar(tens);
-			putchar(ones);
-			if (!(tens == '9' && ones == '9')) 
-			{
-				putchar(',');
-				putchar(' ');
-			}
+
+			putchar((digit1 % 10) + '0');
+			
+			putchar((digit2 % 10) + '0');
+			if (digit1 == 8 && digit2 == 9)
+				continue;
+			
+			putchar(',');
+			putchar(' ');
 		}
 	}
+
 	putchar('\n');
+
 	return (0);
 }
-	
