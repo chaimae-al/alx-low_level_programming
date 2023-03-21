@@ -5,7 +5,6 @@
  * @n: digit to find the last place of.
  * Return: The last digit.
  */
-
 int print_last_digit(int n)
 {
 	if (n < 0)
