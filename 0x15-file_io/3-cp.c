@@ -1,9 +1,8 @@
 #include "main.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 char *create_buffer(char *file);
-void close_file(int close_f);
+void close_file(int fd);
 
 /**
  * create_buffer - Allocates bytes for a buffer.
@@ -29,17 +28,17 @@ char *create_buffer(char *file)
 
 /**
  * close_file - Closes file descriptors
- * @close_f: file descriptor to be closed
+ * @fd: file descriptor to be closed
  */
-void close_file(int close_f)
+void close_file(int fd)
 {
 	int c;
 
-	c = close(close_f);
+	c = close(fd);
 
 	if (c == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close it %d\n", close_f);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
@@ -84,8 +83,7 @@ int main(int argc, char *argv[])
 		w = write(dst, buffer, r);
 		if (dst == -1 || w == -1)
 		{
-			dprintf(STDERR_FILENO,
-				"Error: Can't write to %s\n", argv[2]);
+			dprintf(STDERR_FILENO,"Error: Can't write to %s\n", argv[2]);
 			free(buffer);
 			exit(99);
 		}
