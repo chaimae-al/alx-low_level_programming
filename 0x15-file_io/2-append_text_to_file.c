@@ -28,13 +28,14 @@ int append_text_to_file(const char *filename, char *text_content)
 		{
 			len++;
 		}
-	}
-    write_f = write(open_f, text_content, len);
+		write_f = write(open_f, text_content, len);
 		if (write_f == -1)
 		{
 			close(open_f);
 			return (-1);
 		}
+	}
+	
 	close(open_f);
 	return (-1);
 }
